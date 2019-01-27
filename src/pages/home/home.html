@@ -1,14 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Yoga Breathing
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div id="container">
+    <div id="homeDiv">
+      <span>15 minutes Pranayam package for healthier you.</span>
+      <button (click) = "start()" id="startBtn" class="button button-block button-balanced">
+        Start
+      </button>
+    </div>
+    <div id="countdownDiv" class='hidden'>
+        <div id="cdHeader" class="cdItem">
+          Bhraamari
+        </div>
+        <hr/>
+        <div id="cdTimer" class="cdItem">
+          --:--
+        </div>
+        <div id="cdText" class="cdItem">
+          time
+        </div>
+    </div>
+  </div>
 </ion-content>

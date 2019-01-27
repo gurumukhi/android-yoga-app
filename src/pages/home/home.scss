@@ -1,3 +1,33 @@
-page-home {
+#container {
+    height: 100%;
+}
 
+#startBtn {
+    margin-top: 50%;
+    font-size: 20px;
+    padding: 10px;
+    background-color: green;
+    color:white;
+}
+
+.hidden {
+    display: none;
+}
+
+#countdownDiv {
+    height: 100%;
+    padding: 20px;
+}
+
+#cdHeader {
+    font-size: 25px;
+}
+
+#cdTimer {
+    font-size: 75px;
+}
+
+#cdText {
+    font-size: 20px;
+    color: "red";
 }
