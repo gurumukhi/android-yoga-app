@@ -19,10 +19,10 @@ export class HomePage {
     if (this.timerSetInterval) {
       clearInterval(this.timerSetInterval);
     }
-    // var prNameList = ['Bhastrika','KapaalBhaati','Baahya','AnulomVilom','Bharaamari','Udgeet','Pranav'];
-    // var prTimeList = [1,3,1,5,1,1,1];
-    var prNameList = ['Bhastrika','KapaalBhaati','Baahya'];
-    var prTimeList = [0.1,0.2,0.1];
+    var prNameList = ['Bhastrika','KapaalBhaati','Baahya','AnulomVilom','Bharaamari','Udgeet','Pranav'];
+    var prTimeList = [1,3,1,5,1,1,1];
+    // var prNameList = ['Bhastrika','KapaalBhaati','Baahya'];
+    // var prTimeList = [0.1,0.2,0.1];
     var header = document.getElementById("cdHeader");
     var timer = document.getElementById("cdTimer");
     if (i == prNameList.length) {
@@ -53,13 +53,13 @@ export class HomePage {
     document.querySelector('#homeDiv').classList.toggle('hidden');
     document.querySelector('#countdownDiv').classList.toggle('hidden');
 
-    // this.startCountdown();
+    this.startCountdown();
   }
 
   constructor(public navCtrl: NavController) {
     // constructor(public navCtrl: NavController, private vibration: Vibration) {
-      setTimeout(() => {
-      this.start();
-    }, 1000);
+    //   setTimeout(() => {
+    //   this.start();
+    // }, 1000);
   }
 }
