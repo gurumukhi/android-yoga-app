@@ -72,8 +72,14 @@ li {
     padding-bottom : 3px;
 }
 
-.increaseTimeIcon, .decreaseTimeIcon {
-    float: right;
-    padding-left : 3px;
-    padding-bottom: 3px;
+.increaseTimeIcon {
+    position: fixed;
+    right: 40px;
+}
+
+.decreaseTimeIcon {
+    // float: right;
+    // padding-bottom: 3px;
+    position: fixed;
+    right: 10px;
 }

@@ -61,6 +61,7 @@ export class HomePage {
       return;
     }
     if (this.prTimeList[i] <= 0) {
+      console.log('skipping '+i + ', for time '+this.prTimeList[i]);
       return this.startCountdown(i+1);
     }
 
@@ -95,7 +96,7 @@ export class HomePage {
     console.log('start clicked');
     document.querySelector('#homeDiv').classList.toggle('hidden');
     document.querySelector('#countdownDiv').classList.toggle('hidden');
-    this.startCountdown();
+    this.startCountdown(0);
   }
 
   goHome() {
@@ -145,7 +146,7 @@ export class HomePage {
       this.prTimeList[index-1] = this.prTimeList[index-1] - (this.prTimeList[index-1] > 0 ? .5 : 0);
       this.set('timeList', this.prTimeList);
     }
-    this.repaintSettingsList();
+    setTimeout(this.repaintSettingsList, 1000);
   }
 
   repaintSettingsList() {
