@@ -62,7 +62,18 @@
     color: "red";
 }
 
+ul {
+    padding: 0px;
+}
+
 li {
-    display: inline-block;
-    margin: 2px;
+    display: block;
+    font-size: 20px;
+    padding-bottom : 3px;
+}
+
+.increaseTimeIcon, .decreaseTimeIcon {
+    float: right;
+    padding-left : 3px;
+    padding-bottom: 3px;
 }

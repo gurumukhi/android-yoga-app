@@ -23,6 +23,30 @@ export class HomePage {
     return date.toISOString().substr(14, 5);
   }
 
+  setTimerText(countdown, originalMins) {
+    let mins = this.getSecondsInMinutes(countdown);
+    let minsLeft = countdown/60;
+    if (minsLeft <= originalMins) {
+      document.getElementById("cdTimer").style.visibility = 'visible';
+      document.getElementById("cdTimer").innerHTML = mins;
+      if (document.getElementById("cdText").innerHTML != 'time') {
+        // vibration.start("ring");
+        setTimeout(() => {
+          // vibration.stop();
+          // startCountdown(i+1);
+        }, 1000);
+        document.getElementById("cdText").innerHTML = 'time';
+      }
+    } else {
+      setTimeout(() => {
+        document.getElementById("cdTimer").style.visibility = 'hidden';
+      }, 500) /// change this to 500
+      document.getElementById("cdTimer").style.visibility = 'visible';
+      document.getElementById("cdTimer").innerHTML = '--:--';
+      document.getElementById("cdText").innerHTML = 'get ready!';
+    }
+  }
+
   startCountdown(i = 0) {
     if (this.timerSetInterval) {
       clearInterval(this.timerSetInterval);
@@ -31,20 +55,28 @@ export class HomePage {
     var timer = document.getElementById("cdTimer");
     if (i == this.prNameList.length) {
       console.log('DONE CountDown');
+      header.innerHTML = 'Relax!';
+      timer.innerHTML = 'Completed';
+      document.getElementById("cdText").innerHTML = '';
       return;
+    }
+    if (this.prTimeList[i] <= 0) {
+      return this.startCountdown(i+1);
     }
 
     header.innerHTML = this.prNameList[i];
-    var countdown = this.prTimeList[i] * 60;
+    var countdown = this.prTimeList[i] * 60 + this.restTime;
     // var total = countdown;
-    timer.innerHTML = this.getSecondsInMinutes(countdown--);
+    this.setTimerText(countdown--, this.prTimeList[i]);
+    if (this.timerSetInterval) {
+      clearInterval(this.timerSetInterval);
+    }
     this.timerSetInterval = setInterval(() => {
-      timer.innerHTML = this.getSecondsInMinutes(countdown);
+      this.setTimerText(countdown, this.prTimeList[i]);
       if (!countdown--) {
-        /// vibration.start("ring");
-        // this.vibration.vibrate(50);
+        // vibration.start("ring");
         setTimeout(() => {
-         /// vibration.stop();
+          // vibration.stop();
           this.startCountdown(i+1);
         }, 1000);
         clearInterval(this.timerSetInterval);
@@ -94,7 +126,8 @@ export class HomePage {
     });
   }
 
-  increasetime (index) {
+  increaseTime (index) {
+    console.log('increasing time for index - ' + index);
     if (!index) {
       this.restTime = this.restTime + 1;
     } else {
@@ -105,6 +138,7 @@ export class HomePage {
   }
 
   decreaseTime(index) {
+    console.log('decreasing time for index - ' + index);
     if (!index) {
       this.restTime = this.restTime - (this.restTime > 0 ? 1 : 0);
     } else {
@@ -124,18 +158,18 @@ export class HomePage {
   async setTimeFromStorage () {
     this.prTimeList = await this.get('timeList');
     this.restTime = await this.get('restTime');
-
     if(!this.prTimeList || !this.restTime) {
       this.set('timeList', [1,3,1,5,1,1,1]);
       this.set('restTime', 5);
     }
+    this.repaintSettingsList();
   }
 
   constructor(public navCtrl: NavController, public storage: Storage) {
     // constructor(public navCtrl: NavController, private vibration: Vibration) {
-      setTimeout(() => {
-      this.openSettings();
-    }, 10);
+    //   setTimeout(() => {
+    //   this.openSettings();
+    // }, 10);
   }
   async ionViewDidEnter() {
     await this.setTimeFromStorage();
