@@ -2,12 +2,42 @@
     height: 100%;
 }
 
-#startBtn {
-    margin-top: 50%;
+#settingsIcon {
+    position: fixed;
+    right: 20px;
+}
+
+.mainBtn {
+    margin-top: 10px;
     font-size: 20px;
     padding: 10px;
-    background-color: green;
     color:white;
+    height: 40px;
+}
+
+#settingsBtn {
+    background-color: green;
+}
+
+#startBtn {
+    margin-top: 50%;
+    background-color: green;
+}
+
+#homeBtn {
+    background-color: green;
+}
+
+#doneBtn {
+    background-color: green;
+}
+
+#cancelBtn {
+    background-color: orangered;
+}
+
+#closeIcon {
+    right: 0px;
 }
 
 .hidden {
@@ -30,4 +60,9 @@
 #cdText {
     font-size: 20px;
     color: "red";
+}
+
+li {
+    display: inline-block;
+    margin: 2px;
 }

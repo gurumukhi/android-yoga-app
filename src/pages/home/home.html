@@ -1,19 +1,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Yoga Breathing
+      <span>
+        Yoga Breathing
+      </span>
+      <!-- <button > -->
+        <ion-icon id="settingsIcon" size="large" slot="end" name="settings" (click) = "openSettings()"></ion-icon>
+      <!-- </button> -->
     </ion-title>
-  </ion-navbar>
+</ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <div id="container">
     <div id="homeDiv">
+      <!-- <button ion-button (click)="set('color','blue')">Set Color To Blue</button>
+      <button ion-button (click)="remove('color')">Remove Color Setting</button>
+      <button ion-button (click)="getColor()">Get Color Setting</button> -->
       <span>15 minutes Pranayam package for healthier you.</span>
-      <button (click) = "start()" id="startBtn" class="button button-block button-balanced">
-        Start
+      <button id="startBtn" (click) = "start()" class="button button-block button-balanced mainBtn">
+          Start
+        </button>
+        <button id="settingsBtn" (click) = "openSettings()" class="button button-block button-balanced mainBtn">
+        Settings
       </button>
-    </div>
+      <!-- <ion-icon id="settingsIcon2" size="large" slot="end" name="settings" (click) = "openSettings()"></ion-icon> -->
+      </div>
     <div id="countdownDiv" class='hidden'>
         <div id="cdHeader" class="cdItem">
           Bhraamari
@@ -25,6 +37,60 @@
         <div id="cdText" class="cdItem">
           time
         </div>
+        <button id="cancelBtn"(click) = "goHome()" class="button button-block button-balanced mainBtn">
+          Cancel
+        </button>
+    </div>
+    <div id="settingsDiv" class='hidden'>
+        <h1>List of Pranayams</h1>
+        <ion-icon id='closeIcon' name="close-circle-outline"></ion-icon>
+        <ul>
+            <li>
+              1. Bhastrika: <span id='time1'>1</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increaseTime(1)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreaseTime(1)'></ion-icon>
+            </li>
+            <li>
+              2. KapaalBhaati: <span id='time2'>3</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(2)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(2)'></ion-icon>
+            </li>
+            <li>
+              3. Baahya: <span id='time3'>1</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(3)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(3)'></ion-icon>
+            </li>
+            <li>
+              4. AnulomVilom: <span id='time4'>5</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(4)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(4)'></ion-icon>
+            </li>
+            <li>
+              5. Bharaamari: <span id='time5'>1</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(5)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(5)'></ion-icon>
+            </li>
+            <li>
+              6. Udgeet: <span id='time6'>1</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(6)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(6)'></ion-icon>
+            </li>
+            <li>
+              7. Pranav: <span id='time7'>1</span> min 
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(7)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(7)'></ion-icon>
+            </li>
+            <li>
+              > Rest time: <span id="time0">5</span> sec
+              <ion-icon name="add-circle" class='increaseTimeIcon' (click)='increasetime(0)'></ion-icon>
+              <ion-icon name="remove-circle" class='decreaseTimeIcon' (click)='decreasetime(0)'></ion-icon>
+            </li>
+        </ul>
+        Learn or get more info at https://gurumukhi.wordpress.com/yoga/
+
+        <button id="doneBtn" (click) = "goHome()" class="button button-block button-balanced mainBtn">
+          Done
+        </button>
     </div>
   </div>
 </ion-content>
